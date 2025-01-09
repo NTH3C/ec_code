@@ -77,34 +77,41 @@ class __TwigTemplate_53030699772ed5656ed287e451e465a4 extends Template
                     ";
         // line 33
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["booksRead"]) || array_key_exists("booksRead", $context) ? $context["booksRead"] : (function () { throw new RuntimeError('Variable "booksRead" does not exist.', 33, $this->source); })()));
-        foreach ($context['_seq'] as $context["_key"] => $context["bookRead"]) {
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["booksReading"]) || array_key_exists("booksReading", $context) ? $context["booksReading"] : (function () { throw new RuntimeError('Variable "booksReading" does not exist.', 33, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["bookReading"]) {
             // line 34
-            yield "                        <tr>
+            yield "                    
+                        <tr>
                             <td>
                                 <div class=\"flex flex-col gap-2\">
                                     <a class=\"leading-none font-medium text-sm text-gray-900 hover:text-primary\"
                                        href=\"#\">
-                                        ERREUR : Impossible de récupérer le titre
+                                        <div>";
+            // line 40
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["bookReading"], "id", [], "any", false, false, false, 40), "html", null, true);
+            yield "</div>
                                     </a>
                                     <span class=\"text-2sm text-gray-700 font-normal leading-3\">
-                                    ERREUR : Impossible de récupérer la description
+                                    <div>";
+            // line 43
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["bookReading"], "description", [], "any", false, false, false, 43), "html", null, true);
+            yield "</div>
                                 </span>
                                 </div>
                             </td>
                             <td class=\"text-end\">
                                 ";
-            // line 47
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, $context["bookRead"], "updatedAt", [], "any", false, false, false, 47), "d/m/Y à H:i"), "html", null, true);
+            // line 48
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, $context["bookReading"], "updatedAt", [], "any", false, false, false, 48), "d/m/Y à H:i"), "html", null, true);
             yield "
                             </td>
                         </tr>
-                    ";
+                        ";
         }
         $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_key'], $context['bookRead'], $context['_parent']);
+        unset($context['_seq'], $context['_key'], $context['bookReading'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 51
+        // line 52
         yield "                    </tbody>
                 </table>
             </div>
@@ -144,7 +151,7 @@ class __TwigTemplate_53030699772ed5656ed287e451e465a4 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  108 => 51,  98 => 47,  83 => 34,  79 => 33,  45 => 1,);
+        return array (  115 => 52,  105 => 48,  97 => 43,  91 => 40,  83 => 34,  79 => 33,  45 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -181,24 +188,25 @@ class __TwigTemplate_53030699772ed5656ed287e451e465a4 extends Template
                     </tr>
                     </thead>
                     <tbody>
-                    {% for bookRead in booksRead %}
+                    {% for bookReading in booksReading %}
+                    
                         <tr>
                             <td>
                                 <div class=\"flex flex-col gap-2\">
                                     <a class=\"leading-none font-medium text-sm text-gray-900 hover:text-primary\"
                                        href=\"#\">
-                                        ERREUR : Impossible de récupérer le titre
+                                        <div>{{ bookReading.id }}</div>
                                     </a>
                                     <span class=\"text-2sm text-gray-700 font-normal leading-3\">
-                                    ERREUR : Impossible de récupérer la description
+                                    <div>{{ bookReading.description }}</div>
                                 </span>
                                 </div>
                             </td>
                             <td class=\"text-end\">
-                                {{ bookRead.updatedAt|date('d/m/Y à H:i') }}
+                                {{ bookReading.updatedAt|date('d/m/Y à H:i') }}
                             </td>
                         </tr>
-                    {% endfor %}
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>

@@ -83,17 +83,34 @@ class __TwigTemplate_5a0f63ce360ed9288ce33eb7b618072a extends Template
                     <tr>
                         <td>
                             <div class=\"flex flex-col gap-2\">
-                                <a class=\"leading-none font-medium text-sm text-gray-900 hover:text-primary\"
+                            ";
+        // line 42
+        $context['_parent'] = $context;
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["booksRead"]) || array_key_exists("booksRead", $context) ? $context["booksRead"] : (function () { throw new RuntimeError('Variable "booksRead" does not exist.', 42, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["bookRead"]) {
+            // line 43
+            yield "                                <a class=\"leading-none font-medium text-sm text-gray-900 hover:text-primary\"
                                    href=\"#\">
-                                    Le Moine qui vendit sa Ferrari
+                                    <div>";
+            // line 45
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["bookRead"], "id", [], "any", false, false, false, 45), "html", null, true);
+            yield "</div>
                                 </a>
                                 <span class=\"text-2sm text-gray-700 font-normal leading-3\">
-                                    Un conte sur la quête du bonheur et du succès intérieur.
+                                    <div>";
+            // line 48
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["bookRead"], "description", [], "any", false, false, false, 48), "html", null, true);
+            yield "</div>
                                 </span>
                             </div>
                         </td>
-                        <td>Spiritualité</td>
-                        <td>
+                        ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_key'], $context['bookRead'], $context['_parent']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 53
+        yield "                        <td>
                             <div class=\"rating\">
                                 <div class=\"rating-label checked\">
                                     <i class=\"rating-on ki-solid ki-star text-base leading-none\"></i>
@@ -155,9 +172,17 @@ class __TwigTemplate_5a0f63ce360ed9288ce33eb7b618072a extends Template
     /**
      * @codeCoverageIgnore
      */
+    public function isTraitable(): bool
+    {
+        return false;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDebugInfo(): array
     {
-        return array (  45 => 1,);
+        return array (  113 => 53,  102 => 48,  96 => 45,  92 => 43,  88 => 42,  45 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -203,16 +228,17 @@ class __TwigTemplate_5a0f63ce360ed9288ce33eb7b618072a extends Template
                     <tr>
                         <td>
                             <div class=\"flex flex-col gap-2\">
+                            {% for bookRead in booksRead %}
                                 <a class=\"leading-none font-medium text-sm text-gray-900 hover:text-primary\"
                                    href=\"#\">
-                                    Le Moine qui vendit sa Ferrari
+                                    <div>{{ bookRead.id }}</div>
                                 </a>
                                 <span class=\"text-2sm text-gray-700 font-normal leading-3\">
-                                    Un conte sur la quête du bonheur et du succès intérieur.
+                                    <div>{{ bookRead.description }}</div>
                                 </span>
                             </div>
                         </td>
-                        <td>Spiritualité</td>
+                        {% endfor %}
                         <td>
                             <div class=\"rating\">
                                 <div class=\"rating-label checked\">

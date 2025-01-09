@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\BookRead;
 use App\Repository\BookReadRepository;
 use App\Repository\BookRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,13 +26,18 @@ class HomeController extends AbstractController
     public function index(): Response
     {
         $books = $this->bookRepository->findAll();
-        $userId     = 1;  // L'ID de l'utilisateur, à ajuster selon le contexte
-        $booksRead  = $this->readBookRepository->findByUserId($userId, false);  // Récupère les livres lus par l'utilisateur
+        $userId       = 1;  // L'ID de l'utilisateur, à ajuster selon le contexte
+        $booksRead    = $this->readBookRepository->findByUserId($userId, true); 
+        $booksReading = $this->readBookRepository->findByUserId($userId, false);
+        
+        
+        // Récupère les livres lus par l'utilisateur
 
         // Render the 'home.html.twig' template
         return $this->render('pages/home.html.twig', [
             'books'     => $books,
             'booksRead' => $booksRead,  // Passe les livres lus à la vue
+            'booksReading' => $booksReading,
             'name'      => 'Accueil',    // Passe un nom à la vue
         ]);
     }
