@@ -191,6 +191,6 @@ class __TwigTemplate_b35c8c1646c47aad9433904fab440ec3 extends Template
             </div>
         </div>
     </div>
-</div>", "modals/search.html.twig", "/Users/nathan/Desktop/ec_code/templates/modals/search.html.twig");
+</div>", "modals/search.html.twig", "/Users/nathan/Desktop/ec_code-1/templates/modals/search.html.twig");
     }
 }

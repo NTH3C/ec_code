@@ -1,45 +1,27 @@
-{# templates/book/save.html.twig #}
-
-<div class="modal" data-modal="true" id="book_modal">
-    <div class="modal-content max-w-[600px] top-[15%]">
-        <div class="modal-header py-4 px-5">
-            <h3 class="modal-title">Ma lecture</h3>
-        </div>
-        <div class="modal-body p-0 pb-5">
-            <div class="scrollable-y-auto" data-scrollable="true" data-scrollable-max-height="auto"
-                 data-scrollable-offset="300px">
-                {{ form_start(BookReadForm) }}
-                    <div class="flex flex-col gap-5 p-5">
-                        <div class="flex flex-col gap-1">
-                            <label for="book" class="form-label font-normal text-gray-900">Livre</label>
-                            {{ form_row(BookReadForm.book_id, {'attr': {'class': 'select'}}) }}
-                        </div>
-
-                        <div class="flex flex-col gap-1">
-                            <label class="form-label font-normal text-gray-900">Mes notes</label>
-                            <div class="flex flex-col w-full gap-1">
-                                {{ form_row(BookReadForm.description, {'attr': {'class': 'textarea', 'placeholder': 'Notez-ici les idées importantes de l\'oeuvre.'}}) }}
-                            </div>
-                        </div>
-
-                        <div class="flex flex-col gap-1">
-                            <label for="rating" class="form-label font-normal text-gray-900">Note</label>
-                            {{ form_row(BookReadForm.rating, {'attr': {'class': 'select'}}) }}
-                        </div>
-
-                        <div class="flex flex-col gap-1">
-                            <label class="switch">
-                                <span class="switch-label font-normal text-gray-900">Lecture terminée</span>
-                                {{ form_row(BookReadForm.is_read, {'attr': {'class': 'switch-input'}}) }}
-                            </label>
-                        </div>
-
-                        <div class="flex">
-                            <button type="submit" class="btn btn-primary">Enregistrer</button>
-                        </div>
-                    </div>
-                {{ form_end(BookReadForm) }}
-            </div>
-        </div>
+<form action="{{ path('book_read') }}" method="POST">
+    <div>
+        <label for="book_id">Livre</label>
+        <select name="book_id" id="book_id">
+            {% for book in books %}
+                <option value="{{ book.id }}">{{ book.name }}</option>
+            {% endfor %}
+        </select>
     </div>
-</div>
+
+    <div>
+        <label for="description">Description</label>
+        <textarea name="description" id="description" placeholder="Entrez une description"></textarea>
+    </div>
+
+    <div>
+        <label for="rating">Note</label>
+        <input type="number" name="rating" id="rating" min="1" max="5" step="0.1" placeholder="Donnez une note de 1 à 5">
+    </div>
+
+    <div>
+        <label for="is_read">Livre lu ?</label>
+        <input type="checkbox" name="is_read" id="is_read" value="1">
+    </div>
+
+    <button type="submit">Enregistrer la lecture</button>
+</form>

@@ -109,6 +109,6 @@ class __TwigTemplate_660db22184065e7b10687abab8bec644 extends Template
         </button>
     </div>
     <!-- End of Container -->
-</header>", "components/main/header.html.twig", "/Users/nathan/Desktop/ec_code/templates/components/main/header.html.twig");
+</header>", "components/main/header.html.twig", "/Users/nathan/Desktop/ec_code-1/templates/components/main/header.html.twig");
     }
 }

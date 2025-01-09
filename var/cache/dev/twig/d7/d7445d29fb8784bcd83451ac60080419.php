@@ -297,6 +297,6 @@ class __TwigTemplate_9461b25dc38235807656bfe2aadb3fcf extends Template
     <!-- End of Scripts -->
 </body>
 </html>
-", "base.html.twig", "/Users/nathan/Desktop/ec_code/templates/base.html.twig");
+", "base.html.twig", "/Users/nathan/Desktop/ec_code-1/templates/base.html.twig");
     }
 }

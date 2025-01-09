@@ -101,6 +101,6 @@ class __TwigTemplate_aebd8bddd6212622ec5e8b6a89746e70 extends Template
         </div>
     </div>
     <!-- End of Container -->
-</footer>", "components/main/footer.html.twig", "/Users/nathan/Desktop/ec_code/templates/components/main/footer.html.twig");
+</footer>", "components/main/footer.html.twig", "/Users/nathan/Desktop/ec_code-1/templates/components/main/footer.html.twig");
     }
 }

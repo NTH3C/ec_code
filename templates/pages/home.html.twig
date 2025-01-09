@@ -29,7 +29,7 @@
                                 </p>
                             </div>
                             <div class="flex justify-center">
-                                <a class="btn btn-dark" href="#" data-modal-toggle="#book_modal">
+                                <a class="btn btn-dark" href="#" data-bs-toggle="modal" data-bs-target="#bookModal">
                                     Ajouter une lecture
                                 </a>
                             </div>
@@ -54,5 +54,51 @@
             </div>
         </div>
         <!-- end: grid -->
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bookModalLabel">Ajouter une lecture</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulaire pour ajouter une lecture -->
+                    <form action="{{ path('book_read') }}" method="POST">
+                        <div class="mb-3">
+                            <label for="book_id" class="form-label">Livre</label>
+                            <select name="book_id" id="book_id" class="form-control">
+                                {% if books is not empty %}
+                                {% for book in books %}
+                                <div>{{ book.name }}</div>  {# Assurez-vous que 'title' est un champ valide dans votre entité Book #}
+                                {% else %}
+                                <p>Aucun livre disponible.</p>
+                                {% endfor %}
+                                {% endif %}
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea name="description" id="description" class="form-control"></textarea>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="rating" class="form-label">Note</label>
+                            <input type="number" name="rating" id="rating" class="form-control" step="0.1" min="0" max="5" />
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="is_read" class="form-label">Lu</label>
+                            <input type="checkbox" name="is_read" id="is_read" value="1" />
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

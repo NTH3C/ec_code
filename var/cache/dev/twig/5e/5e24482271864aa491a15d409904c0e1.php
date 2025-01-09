@@ -100,6 +100,6 @@ class __TwigTemplate_dd0655e45edc2e797261cf02a27f07d3 extends Template
             <img src=\"{{  asset('media/charts/Radar_Sample.png') }}\" alt=\"Radar Sample\"/>
         </figure>
     </div>
-</div>", "components/home/radarChart.html.twig", "/Users/nathan/Desktop/ec_code/templates/components/home/radarChart.html.twig");
+</div>", "components/home/radarChart.html.twig", "/Users/nathan/Desktop/ec_code-1/templates/components/home/radarChart.html.twig");
     }
 }

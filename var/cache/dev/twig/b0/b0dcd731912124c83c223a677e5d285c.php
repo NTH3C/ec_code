@@ -265,6 +265,6 @@ class __TwigTemplate_472f67c4dd8c4fcf68ed5866a7beba57 extends Template
     </div>
     <!-- End of Page -->
 {% endblock %}
-", "auth/register.html.twig", "/Users/nathan/Desktop/ec_code/templates/auth/register.html.twig");
+", "auth/register.html.twig", "/Users/nathan/Desktop/ec_code-1/templates/auth/register.html.twig");
     }
 }

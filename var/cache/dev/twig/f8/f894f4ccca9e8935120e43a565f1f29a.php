@@ -232,6 +232,6 @@ class __TwigTemplate_faab30fa9571777b782569c90526e436 extends Template
 <!-- End of Scripts -->
 </body>
 </html>
-", "auth.html.twig", "/Users/nathan/Desktop/ec_code/templates/auth.html.twig");
+", "auth.html.twig", "/Users/nathan/Desktop/ec_code-1/templates/auth.html.twig");
     }
 }

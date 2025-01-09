@@ -4,7 +4,7 @@ namespace App\Form;
 
 use App\Entity\BookRead;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -47,10 +47,17 @@ class BookReadFormType extends AbstractType
                 'data' => new \DateTime(),
                 'attr' => ['readonly' => true], // user can't modify
             ])
-            // Ajout du champ finished
-            ->add('is_read', CheckboxType::class, [
-                'required' => false, // Non obligatoire
+            ->add('is_read', ChoiceType::class, [
+                'mapped' => false,
+                'choices' => [
+                    'Oui' => true,
+                    'Non' => false,
+                ],
+                'expanded' => false, // make it a list
+                'multiple' => false, // one choice only
                 'label' => 'Lecture terminée',
+                'attr' => ['class' => 'switch-input'],
+                'placeholder' => false, 
             ]);
     }
 

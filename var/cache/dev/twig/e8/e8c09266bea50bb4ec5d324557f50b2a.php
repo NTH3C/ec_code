@@ -391,6 +391,6 @@ class __TwigTemplate_cb7fb948d8d4651c1e9d2bb01e025120 extends Template
             </div>
         </div>
     </div>
-</div>", "components/main/sidebar.html.twig", "/Users/nathan/Desktop/ec_code/templates/components/main/sidebar.html.twig");
+</div>", "components/main/sidebar.html.twig", "/Users/nathan/Desktop/ec_code-1/templates/components/main/sidebar.html.twig");
     }
 }

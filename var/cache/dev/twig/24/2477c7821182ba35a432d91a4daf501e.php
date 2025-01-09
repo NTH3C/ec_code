@@ -206,6 +206,6 @@ class __TwigTemplate_dc78bfcdcc86bbd6304415fba1959cbc extends Template
         </div>
     </div>
 {% endblock %}
-", "auth/login.html.twig", "/Users/nathan/Desktop/ec_code/templates/auth/login.html.twig");
+", "auth/login.html.twig", "/Users/nathan/Desktop/ec_code-1/templates/auth/login.html.twig");
     }
 }

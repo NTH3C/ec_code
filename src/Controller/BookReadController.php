@@ -3,48 +3,77 @@
 namespace App\Controller;
 
 use App\Entity\BookRead;
-use App\Form\BookReadFormType;
+use App\Repository\BookRepository;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
+
 
 class BookReadController extends AbstractController
 {
-    /**
-     * @Route("/book/read", name="book_read")
-     */
+    private $bookRepository;
+    
+    public function __construct(BookRepository $bookRepository)
+    {
+        $this->bookRepository = $bookRepository;
+    }
+
+    #[Route('/book/read', name: 'book_read', methods: ['GET', 'POST'])]
     public function saveBookRead(Request $request, EntityManagerInterface $entityManager): Response
     {
-        // Créer une nouvelle instance de BookRead
-        $bookRead = new BookRead();
+        // Récupérer tous les livres pour le formulaire
+        $books = $this->bookRepository->findAll();
 
-        // Créer le formulaire
-        $form = $this->createForm(BookReadFormType::class, $bookRead);
-
-        // Traiter la soumission du formulaire
-        $form->handleRequest($request);
-
-        // Vérifier si le formulaire est soumis et valide
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($request->isMethod('POST')) {
             // Récupérer les données du formulaire
-            $bookRead = $form->getData();
+            $bookId = $request->request->get('book_id');
+            $description = $request->request->get('description');
+            $rating = $request->request->get('rating');
+            $isRead = $request->request->get('is_read') === '1';
 
-            // Enregistrer l'entité dans la base de données
+            // Vérifier l'utilisateur connecté
+            $user = $this->getUser();
+            if (!$user) {
+                $this->addFlash('error', 'Vous devez être connecté pour effectuer cette action.');
+                return $this->redirectToRoute('book_read');
+            }
+
+            $userId = $user->getId();
+
+            // Récupérer l'entité Book correspondante
+            $book = $this->bookRepository->find($bookId);
+            if (!$book) {
+                $this->addFlash('error', 'Le livre sélectionné est introuvable.');
+                return $this->redirectToRoute('book_read');
+            }
+
+            // Créer une nouvelle instance de BookRead
+            $bookRead = new BookRead();
+            $bookRead->setBookId($bookId); // Si BookRead utilise un ID
+            $bookRead->setUserId($userId);     // Associe l'utilisateur connecté
+            $bookRead->setDescription($description);
+            $bookRead->setRating($rating);
+            $bookRead->setRead($isRead);
+            $bookRead->setCreatedAt(new \DateTime());
+            $bookRead->setUpdatedAt(new \DateTime());
+
+
+
+            // Sauvegarder dans la base de données
             $entityManager->persist($bookRead);
             $entityManager->flush();
 
-            // Message de succès
             $this->addFlash('success', 'Votre lecture a été enregistrée avec succès!');
-
-            // Rediriger vers une autre page ou afficher un message
-            return $this->redirectToRoute('book_read'); // ou une autre route de votre choix
+            return $this->redirectToRoute('app.home');
         }
 
-        // Afficher le formulaire dans la vue
+        // Rendre le formulaire sur la page d'accueil
         return $this->render('pages/home.html.twig', [
-            'BookReadForm' => $form->createView(),
+            'books' => $books,
         ]);
     }
 }

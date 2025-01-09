@@ -26,7 +26,7 @@ class BookRead
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: Types::BOOLEAN, options: ["default" => false])]
     private ?bool $is_read = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -96,7 +96,7 @@ class BookRead
         return $this->is_read;
     }
 
-    public function setRead(bool $is_read): static
+    public function setRead(bool $is_read): self
     {
         $this->is_read = $is_read;
 

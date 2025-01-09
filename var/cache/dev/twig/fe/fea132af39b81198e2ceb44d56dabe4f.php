@@ -210,6 +210,6 @@ class __TwigTemplate_53030699772ed5656ed287e451e465a4 extends Template
             </div>
         </div>
     </div>
-</div>", "components/home/booksReading.html.twig", "/Users/nathan/Desktop/ec_code/templates/components/home/booksReading.html.twig");
+</div>", "components/home/booksReading.html.twig", "/Users/nathan/Desktop/ec_code-1/templates/components/home/booksReading.html.twig");
     }
 }
