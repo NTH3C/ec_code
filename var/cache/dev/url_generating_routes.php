@@ -4,12 +4,14 @@
 
 return [
     '_preview_error' => [['code', '_format'], ['_controller' => 'error_controller::preview', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '\\d+', 'code', true], ['text', '/_error']], [], [], []],
+    'app_book' => [[], ['_controller' => 'App\\Controller\\BookController::index'], [], [['text', '/book']], [], [], []],
     'book_read' => [[], ['_controller' => 'App\\Controller\\BookReadController::saveBookRead'], [], [['text', '/book/read']], [], [], []],
     'app_book_reading' => [[], ['_controller' => 'App\\Controller\\BookReadingController::index'], [], [['text', '/book/reading']], [], [], []],
     'app.home' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/']], [], [], []],
     'app_login' => [[], ['_controller' => 'App\\Controller\\LoginController::login'], [], [['text', '/login']], [], [], []],
     'app_logout' => [[], ['_controller' => 'App\\Controller\\LoginController::logout'], [], [['text', '/logout']], [], [], []],
     'app_register' => [[], ['_controller' => 'App\\Controller\\RegistrationController::register'], [], [['text', '/register']], [], [], []],
+    'App\Controller\BookController::index' => [[], ['_controller' => 'App\\Controller\\BookController::index'], [], [['text', '/book']], [], [], []],
     'App\Controller\BookReadController::saveBookRead' => [[], ['_controller' => 'App\\Controller\\BookReadController::saveBookRead'], [], [['text', '/book/read']], [], [], []],
     'App\Controller\BookReadingController::index' => [[], ['_controller' => 'App\\Controller\\BookReadingController::index'], [], [['text', '/book/reading']], [], [], []],
     'App\Controller\HomeController::index' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/']], [], [], []],

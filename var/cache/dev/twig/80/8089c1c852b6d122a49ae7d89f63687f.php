@@ -80,16 +80,16 @@ class __TwigTemplate_5a0f63ce360ed9288ce33eb7b618072a extends Template
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
+                    ";
+        // line 39
+        $context['_parent'] = $context;
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["booksRead"]) || array_key_exists("booksRead", $context) ? $context["booksRead"] : (function () { throw new RuntimeError('Variable "booksRead" does not exist.', 39, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["bookRead"]) {
+            // line 40
+            yield "                    <tr>
                         <td>
                             <div class=\"flex flex-col gap-2\">
-                            ";
-        // line 42
-        $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["booksRead"]) || array_key_exists("booksRead", $context) ? $context["booksRead"] : (function () { throw new RuntimeError('Variable "booksRead" does not exist.', 42, $this->source); })()));
-        foreach ($context['_seq'] as $context["_key"] => $context["bookRead"]) {
-            // line 43
-            yield "                                <a class=\"leading-none font-medium text-sm text-gray-900 hover:text-primary\"
+                                <a class=\"leading-none font-medium text-sm text-gray-900 hover:text-primary\"
                                    href=\"#\">
                                     <div>";
             // line 45
@@ -104,13 +104,7 @@ class __TwigTemplate_5a0f63ce360ed9288ce33eb7b618072a extends Template
                                 </span>
                             </div>
                         </td>
-                        ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_key'], $context['bookRead'], $context['_parent']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 53
-        yield "                        <td>
+                        <td>
                             <div class=\"rating\">
                                 <div class=\"rating-label checked\">
                                     <i class=\"rating-on ki-solid ki-star text-base leading-none\"></i>
@@ -135,7 +129,13 @@ class __TwigTemplate_5a0f63ce360ed9288ce33eb7b618072a extends Template
                             </div>
                         </td>
                     </tr>
-                    </tbody>
+                    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_key'], $context['bookRead'], $context['_parent']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 78
+        yield "                    </tbody>
                 </table>
             </div>
             <div class=\"card-footer justify-center md:justify-between flex-col md:flex-row gap-5 text-gray-600 text-2sm font-medium\">
@@ -182,7 +182,7 @@ class __TwigTemplate_5a0f63ce360ed9288ce33eb7b618072a extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  113 => 53,  102 => 48,  96 => 45,  92 => 43,  88 => 42,  45 => 1,);
+        return array (  138 => 78,  102 => 48,  96 => 45,  89 => 40,  85 => 39,  45 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -225,10 +225,10 @@ class __TwigTemplate_5a0f63ce360ed9288ce33eb7b618072a extends Template
                     </tr>
                     </thead>
                     <tbody>
+                    {% for bookRead in booksRead %}
                     <tr>
                         <td>
                             <div class=\"flex flex-col gap-2\">
-                            {% for bookRead in booksRead %}
                                 <a class=\"leading-none font-medium text-sm text-gray-900 hover:text-primary\"
                                    href=\"#\">
                                     <div>{{ bookRead.id }}</div>
@@ -238,7 +238,6 @@ class __TwigTemplate_5a0f63ce360ed9288ce33eb7b618072a extends Template
                                 </span>
                             </div>
                         </td>
-                        {% endfor %}
                         <td>
                             <div class=\"rating\">
                                 <div class=\"rating-label checked\">
@@ -264,6 +263,7 @@ class __TwigTemplate_5a0f63ce360ed9288ce33eb7b618072a extends Template
                             </div>
                         </td>
                     </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>

@@ -1,63 +1,63 @@
+<!-- Modal for search -->
 <div class="modal" data-modal="true" id="search_modal">
     <div class="modal-content max-w-[600px] top-[15%]">
         <div class="modal-header py-4 px-5">
-            <i class="ki-filled ki-magnifier text-gray-700 text-xl">
-            </i>
-            <input class="input px-0 border-none bg-transparent shadow-none ms-2.5" name="query"
+            <i class="ki-filled ki-magnifier text-gray-700 text-xl"></i>
+            <input id="search-input" class="input px-0 border-none bg-transparent shadow-none ms-2.5" name="query"
                    placeholder="Rechercher..." type="text" value=""/>
             <button class="btn btn-sm btn-icon btn-light btn-clear shrink-0" data-modal-dismiss="true">
-                <i class="ki-filled ki-cross">
-                </i>
+                <i class="ki-filled ki-cross"></i>
             </button>
         </div>
         <div class="modal-body p-0 pb-5">
             <div class="scrollable-y-auto" data-scrollable="true" data-scrollable-max-height="auto"
                  data-scrollable-offset="300px">
                 <div class="menu menu-default p-0 flex-col">
-                    <div class="grid gap-1">
-                        <div class="menu-item">
-                            <div class="menu-link flex justify-between gap-2">
-                                <div class="flex items-center gap-2.5">
-                                    <img alt="Cover" class="rounded-full size-9 shrink-0" src="" />
-                                    <div class="flex flex-col">
-                                        <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px"
-                                           href="#">
-                                            Le Moine qui vendit sa Ferrari
-                                        </a>
-                                        <span class="text-2sm font-normal text-gray-500">
-                                            Un conte sur la quête du bonheur et du succès intérieur.
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="flex items-center gap-2.5">
-                                    <div class="rating">
-                                        <div class="rating-label checked">
-                                            <i class="rating-on ki-solid ki-star text-base leading-none"></i>
-                                            <i class="rating-off ki-outline ki-star text-base leading-none"></i>
-                                        </div>
-                                        <div class="rating-label checked">
-                                            <i class="rating-on ki-solid ki-star text-base leading-none"></i>
-                                            <i class="rating-off ki-outline ki-star text-base leading-none"></i>
-                                        </div>
-                                        <div class="rating-label checked">
-                                            <i class="rating-on ki-solid ki-star text-base leading-none"></i>
-                                            <i class="rating-off ki-outline ki-star text-base leading-none"></i>
-                                        </div>
-                                        <div class="rating-label checked">
-                                            <i class="rating-on ki-solid ki-star text-base leading-none"></i>
-                                            <i class="rating-off ki-outline ki-star text-base leading-none"></i>
-                                        </div>
-                                        <div class="rating-label checked">
-                                            <i class="rating-on ki-solid ki-star text-base leading-none"></i>
-                                            <i class="rating-off ki-outline ki-star text-base leading-none"></i>
+                    <div class="grid gap-1" id="books-list">
+                        {% for book in books %}
+                            <div class="menu-item book-item">
+                                <div class="menu-link flex justify-between gap-2">
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="flex flex-col">
+                                            <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px"
+                                               href="#">{{ book.name }}</a>
+                                            <span class="text-2sm font-normal text-gray-500">{{ book.description }}</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const searchInput = document.querySelector('#search-input');
+        const booksList = document.querySelector('#books-list');
+        const bookItems = Array.from(booksList.querySelectorAll('.book-item'));
+
+        // Fonction pour filtrer les livres
+        function handleSearchInput(event) {
+            const query = event.target.value.toLowerCase();
+
+            bookItems.forEach(item => {
+                const title = item.querySelector('a').textContent.toLowerCase();
+                const description = item.querySelector('span').textContent.toLowerCase();
+
+                // Afficher ou cacher les éléments en fonction de la recherche
+                if (title.includes(query) || description.includes(query)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Ajouter l'événement de saisie
+        searchInput.addEventListener('input', handleSearchInput);
+    });
+</script>

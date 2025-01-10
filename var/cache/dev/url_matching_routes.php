@@ -8,6 +8,7 @@
 return [
     false, // $matchHost
     [ // $staticRoutes
+        '/book' => [[['_route' => 'app_book', '_controller' => 'App\\Controller\\BookController::index'], null, null, null, false, false, null]],
         '/book/read' => [[['_route' => 'book_read', '_controller' => 'App\\Controller\\BookReadController::saveBookRead'], null, ['POST' => 0], null, false, false, null]],
         '/book/reading' => [[['_route' => 'app_book_reading', '_controller' => 'App\\Controller\\BookReadingController::index'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'app.home', '_controller' => 'App\\Controller\\HomeController::index'], null, null, null, false, false, null]],

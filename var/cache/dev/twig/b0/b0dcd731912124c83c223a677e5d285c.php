@@ -103,10 +103,7 @@ class __TwigTemplate_472f67c4dd8c4fcf68ed5866a7beba57 extends Template
                         <span class=\"text-2sm text-gray-700 me-1.5\">
                             Vous avez déjà un compte ?
                         </span>
-                        <a class=\"text-2sm link\" href=\"";
-        // line 21
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("auth.login");
-        yield "\">
+                        <a class=\"text-2sm link\" >
                             Me connecter
                         </a>
                     </div>
@@ -191,7 +188,7 @@ class __TwigTemplate_472f67c4dd8c4fcf68ed5866a7beba57 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  160 => 64,  149 => 55,  147 => 53,  130 => 38,  128 => 36,  121 => 31,  119 => 29,  108 => 21,  95 => 11,  91 => 10,  85 => 6,  75 => 5,  58 => 3,  41 => 1,);
+        return array (  157 => 64,  146 => 55,  144 => 53,  127 => 38,  125 => 36,  118 => 31,  116 => 29,  95 => 11,  91 => 10,  85 => 6,  75 => 5,  58 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -216,7 +213,7 @@ class __TwigTemplate_472f67c4dd8c4fcf68ed5866a7beba57 extends Template
                         <span class=\"text-2sm text-gray-700 me-1.5\">
                             Vous avez déjà un compte ?
                         </span>
-                        <a class=\"text-2sm link\" href=\"{{ path('auth.login') }}\">
+                        <a class=\"text-2sm link\" >
                             Me connecter
                         </a>
                     </div>
