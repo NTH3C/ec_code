@@ -42,49 +42,95 @@ class __TwigTemplate_31fb8d710cfbababd7aa790085ff7620 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "modals/book.html.twig"));
 
         // line 1
-        yield "<form action=\"";
+        yield "<div class=\"modal\" data-modal=\"true\" id=\"book_modal\">
+    <div class=\"modal-content max-w-[600px] top-[15%]\">
+        <div class=\"modal-header py-4 px-5\">
+            <h3 class=\"modal-title\">Ajouter une lecture</h3>
+        </div>
+        <div class=\"modal-body p-0 pb-5\">
+            <div class=\"scrollable-y-auto\" data-scrollable=\"true\" data-scrollable-max-height=\"auto\"
+                 data-scrollable-offset=\"300px\">
+                <form action=\"";
+        // line 9
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("book_read");
         yield "\" method=\"POST\">
-    <div>
-        <label for=\"book_id\">Livre</label>
-        <select name=\"book_id\" id=\"book_id\">
-            ";
-        // line 5
+                    <div class=\"flex flex-col gap-5 p-5\">
+                        <!-- Livre -->
+                        <div class=\"flex flex-col gap-1\">
+                            <label for=\"book\" class=\"form-label font-normal text-gray-900\">Livre</label>
+                            <select id=\"book\" name=\"book_id\" class=\"select\" required>
+                                ";
+        // line 15
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["books"]) || array_key_exists("books", $context) ? $context["books"] : (function () { throw new RuntimeError('Variable "books" does not exist.', 5, $this->source); })()));
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["books"]) || array_key_exists("books", $context) ? $context["books"] : (function () { throw new RuntimeError('Variable "books" does not exist.', 15, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["book"]) {
-            // line 6
-            yield "                <option value=\"";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["book"], "id", [], "any", false, false, false, 6), "html", null, true);
+            // line 16
+            yield "                                    <option value=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["book"], "id", [], "any", false, false, false, 16), "html", null, true);
             yield "\">";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["book"], "name", [], "any", false, false, false, 6), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["book"], "name", [], "any", false, false, false, 16), "html", null, true);
             yield "</option>
-            ";
+                                ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['book'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 8
-        yield "        </select>
-    </div>
+        // line 18
+        yield "                            </select>
+                        </div>
 
-    <div>
-        <label for=\"description\">Description</label>
-        <textarea name=\"description\" id=\"description\" placeholder=\"Entrez une description\"></textarea>
-    </div>
+                        <!-- Notes -->
+                        <div class=\"flex flex-col gap-1\">
+                            <label class=\"form-label font-normal text-gray-900\">Mes notes</label>
+                            <div class=\"flex flex-col w-full gap-1\">
+                                <textarea name=\"description\" class=\"textarea\"
+                                          placeholder=\"Notez ici les idées importantes de l'œuvre.\"
+                                          required></textarea>
+                            </div>
+                        </div>
 
-    <div>
-        <label for=\"rating\">Note</label>
-        <input type=\"number\" name=\"rating\" id=\"rating\" min=\"1\" max=\"5\" step=\"0.1\" placeholder=\"Donnez une note de 1 à 5\">
-    </div>
+                        <!-- Note -->
+                        <div class=\"flex flex-col gap-1\">
+                            <label for=\"rating\" class=\"form-label font-normal text-gray-900\">Note</label>
+                            <select id=\"rating\" class=\"select\" name=\"rating\" required>
+                                ";
+        // line 35
+        $context['_parent'] = $context;
+        $context['_seq'] = CoreExtension::ensureTraversable([1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]);
+        foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
+            // line 36
+            yield "                                    <option value=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["i"], "html", null, true);
+            yield "\">";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["i"], "html", null, true);
+            yield "</option>
+                                ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_key'], $context['i'], $context['_parent']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 38
+        yield "                            </select>
+                        </div>
 
-    <div>
-        <label for=\"is_read\">Livre lu ?</label>
-        <input type=\"checkbox\" name=\"is_read\" id=\"is_read\" value=\"1\">
-    </div>
+                        <!-- Lecture terminée -->
+                        <div class=\"flex flex-col gap-1\">
+                            <label class=\"switch\">
+                                <span class=\"switch-label font-normal text-gray-900\">Lecture terminée</span>
+                                <input name=\"is_read\" type=\"checkbox\" value=\"1\"/>
+                            </label>
+                        </div>
 
-    <button type=\"submit\">Enregistrer la lecture</button>
-</form>
+                        <!-- Bouton Enregistrer -->
+                        <div class=\"flex\">
+                            <button type=\"submit\" class=\"btn btn-primary\">Enregistrer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -113,38 +159,69 @@ class __TwigTemplate_31fb8d710cfbababd7aa790085ff7620 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  68 => 8,  57 => 6,  53 => 5,  45 => 1,);
+        return array (  113 => 38,  102 => 36,  98 => 35,  79 => 18,  68 => 16,  64 => 15,  55 => 9,  45 => 1,);
     }
 
     public function getSourceContext(): Source
     {
-        return new Source("<form action=\"{{ path('book_read') }}\" method=\"POST\">
-    <div>
-        <label for=\"book_id\">Livre</label>
-        <select name=\"book_id\" id=\"book_id\">
-            {% for book in books %}
-                <option value=\"{{ book.id }}\">{{ book.name }}</option>
-            {% endfor %}
-        </select>
-    </div>
+        return new Source("<div class=\"modal\" data-modal=\"true\" id=\"book_modal\">
+    <div class=\"modal-content max-w-[600px] top-[15%]\">
+        <div class=\"modal-header py-4 px-5\">
+            <h3 class=\"modal-title\">Ajouter une lecture</h3>
+        </div>
+        <div class=\"modal-body p-0 pb-5\">
+            <div class=\"scrollable-y-auto\" data-scrollable=\"true\" data-scrollable-max-height=\"auto\"
+                 data-scrollable-offset=\"300px\">
+                <form action=\"{{ path('book_read') }}\" method=\"POST\">
+                    <div class=\"flex flex-col gap-5 p-5\">
+                        <!-- Livre -->
+                        <div class=\"flex flex-col gap-1\">
+                            <label for=\"book\" class=\"form-label font-normal text-gray-900\">Livre</label>
+                            <select id=\"book\" name=\"book_id\" class=\"select\" required>
+                                {% for book in books %}
+                                    <option value=\"{{ book.id }}\">{{ book.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
 
-    <div>
-        <label for=\"description\">Description</label>
-        <textarea name=\"description\" id=\"description\" placeholder=\"Entrez une description\"></textarea>
-    </div>
+                        <!-- Notes -->
+                        <div class=\"flex flex-col gap-1\">
+                            <label class=\"form-label font-normal text-gray-900\">Mes notes</label>
+                            <div class=\"flex flex-col w-full gap-1\">
+                                <textarea name=\"description\" class=\"textarea\"
+                                          placeholder=\"Notez ici les idées importantes de l'œuvre.\"
+                                          required></textarea>
+                            </div>
+                        </div>
 
-    <div>
-        <label for=\"rating\">Note</label>
-        <input type=\"number\" name=\"rating\" id=\"rating\" min=\"1\" max=\"5\" step=\"0.1\" placeholder=\"Donnez une note de 1 à 5\">
-    </div>
+                        <!-- Note -->
+                        <div class=\"flex flex-col gap-1\">
+                            <label for=\"rating\" class=\"form-label font-normal text-gray-900\">Note</label>
+                            <select id=\"rating\" class=\"select\" name=\"rating\" required>
+                                {% for i in [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5] %}
+                                    <option value=\"{{ i }}\">{{ i }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
 
-    <div>
-        <label for=\"is_read\">Livre lu ?</label>
-        <input type=\"checkbox\" name=\"is_read\" id=\"is_read\" value=\"1\">
-    </div>
+                        <!-- Lecture terminée -->
+                        <div class=\"flex flex-col gap-1\">
+                            <label class=\"switch\">
+                                <span class=\"switch-label font-normal text-gray-900\">Lecture terminée</span>
+                                <input name=\"is_read\" type=\"checkbox\" value=\"1\"/>
+                            </label>
+                        </div>
 
-    <button type=\"submit\">Enregistrer la lecture</button>
-</form>
+                        <!-- Bouton Enregistrer -->
+                        <div class=\"flex\">
+                            <button type=\"submit\" class=\"btn btn-primary\">Enregistrer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 ", "modals/book.html.twig", "/Users/nathan/Desktop/ec_code-1/templates/modals/book.html.twig");
     }
 }
