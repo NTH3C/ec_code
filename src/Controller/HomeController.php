@@ -25,8 +25,10 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app.home')]
     public function index(): Response
     {
+
         $books = $this->bookRepository->findAll();
-        $userId       = 1;  // L'ID de l'utilisateur, à ajuster selon le contexte
+        $user         = $this->getUser();  
+        $userId       = $user->getId();    // L'ID de l'utilisateur, à ajuster selon le contexte
         $booksRead    = $this->readBookRepository->findByUserId($userId, true); 
         $booksReading = $this->readBookRepository->findByUserId($userId, false);
         
