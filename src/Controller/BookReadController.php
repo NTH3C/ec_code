@@ -48,7 +48,10 @@ class BookReadController extends AbstractController
 
         // Créer une nouvelle instance de BookRead
         $bookRead = new BookRead();
-        $bookRead->setBook($bookId);
+
+        $books    = $this->bookRepository->findOneById($bookId);
+
+        $bookRead->setBook($books);
 
         $userId   = $user->getId();
 
