@@ -84,7 +84,7 @@ class __TwigTemplate_53030699772ed5656ed287e451e465a4 extends Template
                             <td>
                                 <div class=\"flex flex-col gap-2\">
                                     <a class=\"leading-none font-medium text-sm text-gray-900 hover:text-primary\"
-                                       href=\"#\">
+                                       href=\"#\" data-modal-toggle=\"#book_modal\">
                                         <div>";
             // line 39
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["bookReading"], "book", [], "any", false, false, false, 39), "name", [], "any", false, false, false, 39), "html", null, true);
@@ -192,7 +192,7 @@ class __TwigTemplate_53030699772ed5656ed287e451e465a4 extends Template
                             <td>
                                 <div class=\"flex flex-col gap-2\">
                                     <a class=\"leading-none font-medium text-sm text-gray-900 hover:text-primary\"
-                                       href=\"#\">
+                                       href=\"#\" data-modal-toggle=\"#book_modal\">
                                         <div>{{ bookReading.book.name }}</div>
                                     </a>
                                     <span class=\"text-2sm text-gray-700 font-normal leading-3\">
