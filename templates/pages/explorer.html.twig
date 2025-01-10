@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Explorer les livres{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1>{{ name }}</h1>
+        <p>Voici la liste de tous les livres disponibles :</p>
+
+        <div class="list-group">
+            {% for book in books %}
+                <a href="#" class="list-group-item list-group-item-action">
+                    <h5 class="mb-1">{{ book.title }}</h5>
+                    <p class="mb-1">{{ book.author }}</p>
+                    <small>Catégorie : {{ book.category.name }}</small>
+                </a>
+            {% else %}
+                <p>Aucun livre trouvé.</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

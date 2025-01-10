@@ -151,7 +151,10 @@ class __TwigTemplate_e43e1e8269e3c607e11d6daa0c46497b extends Template
         </div>
         <!-- end: grid -->
     </div>
-";
+    
+    ";
+        // line 59
+        yield from $this->loadTemplate("modals/book.html.twig", "pages/home.html.twig", 59)->unwrap()->yield($context);
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -179,7 +182,7 @@ class __TwigTemplate_e43e1e8269e3c607e11d6daa0c46497b extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  150 => 54,  148 => 53,  143 => 50,  141 => 49,  132 => 42,  130 => 41,  104 => 18,  99 => 16,  89 => 8,  79 => 7,  68 => 4,  58 => 3,  41 => 1,);
+        return array (  157 => 59,  150 => 54,  148 => 53,  143 => 50,  141 => 49,  132 => 42,  130 => 41,  104 => 18,  99 => 16,  89 => 8,  79 => 7,  68 => 4,  58 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -241,6 +244,8 @@ class __TwigTemplate_e43e1e8269e3c607e11d6daa0c46497b extends Template
         </div>
         <!-- end: grid -->
     </div>
+    
+    {% include 'modals/book.html.twig' %}
 {% endblock %}", "pages/home.html.twig", "/Users/nathan/Desktop/ec_code-1/templates/pages/home.html.twig");
     }
 }

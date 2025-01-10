@@ -44,19 +44,56 @@ class __TwigTemplate_dd0655e45edc2e797261cf02a27f07d3 extends Template
         // line 1
         yield "<div class=\"card h-full\">
     <div class=\"card-header\">
-        <h3 class=\"card-title\">
-            Répartition de mes lectures
-        </h3>
+        <h3 class=\"card-title\">Répartition de mes lectures</h3>
     </div>
     <div class=\"card-body flex flex-col gap-5\">
-        <figure>
-            <img src=\"";
-        // line 9
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("media/charts/Radar_Sample.png"), "html", null, true);
-        yield "\" alt=\"Radar Sample\"/>
-        </figure>
+        <div id=\"radarChart\"></div>
     </div>
-</div>";
+</div>
+
+<script src=\"https://cdn.jsdelivr.net/npm/apexcharts\"></script>
+<script>
+    document.addEventListener(\"DOMContentLoaded\", () => {
+        // Données des catégories et des livres lus par catégorie
+        const categories = ";
+        // line 14
+        yield json_encode((isset($context["categories"]) || array_key_exists("categories", $context) ? $context["categories"] : (function () { throw new RuntimeError('Variable "categories" does not exist.', 14, $this->source); })()));
+        yield ";
+        const booksReadCountByCategory = ";
+        // line 15
+        yield json_encode((isset($context["booksReadCountByCategory"]) || array_key_exists("booksReadCountByCategory", $context) ? $context["booksReadCountByCategory"] : (function () { throw new RuntimeError('Variable "booksReadCountByCategory" does not exist.', 15, $this->source); })()));
+        yield ";
+
+        // Configuration du graphique radar
+        var options = {
+            chart: {
+                type: 'radar',
+                height: 350,
+            },
+            series: [{
+                name: 'Books Read',
+                data: booksReadCountByCategory
+            }],
+            labels: categories, // Les catégories seront utilisées comme labels
+            title: {
+                text: 'Books Read by Category'
+            },
+            stroke: {
+                width: 2
+            },
+            fill: {
+                opacity: 0.4
+            },
+            markers: {
+                size: 4
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector(\"#radarChart\"), options);
+        chart.render();
+    });
+</script>
+";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -84,22 +121,56 @@ class __TwigTemplate_dd0655e45edc2e797261cf02a27f07d3 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  55 => 9,  45 => 1,);
+        return array (  64 => 15,  60 => 14,  45 => 1,);
     }
 
     public function getSourceContext(): Source
     {
         return new Source("<div class=\"card h-full\">
     <div class=\"card-header\">
-        <h3 class=\"card-title\">
-            Répartition de mes lectures
-        </h3>
+        <h3 class=\"card-title\">Répartition de mes lectures</h3>
     </div>
     <div class=\"card-body flex flex-col gap-5\">
-        <figure>
-            <img src=\"{{  asset('media/charts/Radar_Sample.png') }}\" alt=\"Radar Sample\"/>
-        </figure>
+        <div id=\"radarChart\"></div>
     </div>
-</div>", "components/home/radarChart.html.twig", "/Users/nathan/Desktop/ec_code-1/templates/components/home/radarChart.html.twig");
+</div>
+
+<script src=\"https://cdn.jsdelivr.net/npm/apexcharts\"></script>
+<script>
+    document.addEventListener(\"DOMContentLoaded\", () => {
+        // Données des catégories et des livres lus par catégorie
+        const categories = {{ categories|json_encode|raw }};
+        const booksReadCountByCategory = {{ booksReadCountByCategory|json_encode|raw }};
+
+        // Configuration du graphique radar
+        var options = {
+            chart: {
+                type: 'radar',
+                height: 350,
+            },
+            series: [{
+                name: 'Books Read',
+                data: booksReadCountByCategory
+            }],
+            labels: categories, // Les catégories seront utilisées comme labels
+            title: {
+                text: 'Books Read by Category'
+            },
+            stroke: {
+                width: 2
+            },
+            fill: {
+                opacity: 0.4
+            },
+            markers: {
+                size: 4
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector(\"#radarChart\"), options);
+        chart.render();
+    });
+</script>
+", "components/home/radarChart.html.twig", "/Users/nathan/Desktop/ec_code-1/templates/components/home/radarChart.html.twig");
     }
 }

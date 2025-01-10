@@ -1,12 +1,45 @@
 <div class="card h-full">
     <div class="card-header">
-        <h3 class="card-title">
-            Répartition de mes lectures
-        </h3>
+        <h3 class="card-title">Répartition de mes lectures</h3>
     </div>
     <div class="card-body flex flex-col gap-5">
-        <figure>
-            <img src="{{  asset('media/charts/Radar_Sample.png') }}" alt="Radar Sample"/>
-        </figure>
+        <div id="radarChart"></div>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Données des catégories et des livres lus par catégorie
+        const categories = {{ categories|json_encode|raw }};
+        const booksReadCountByCategory = {{ booksReadCountByCategory|json_encode|raw }};
+
+        // Configuration du graphique radar
+        var options = {
+            chart: {
+                type: 'radar',
+                height: 350,
+            },
+            series: [{
+                name: 'Books Read',
+                data: booksReadCountByCategory
+            }],
+            labels: categories, // Les catégories seront utilisées comme labels
+            title: {
+                text: 'Books Read by Category'
+            },
+            stroke: {
+                width: 2
+            },
+            fill: {
+                opacity: 0.4
+            },
+            markers: {
+                size: 4
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#radarChart"), options);
+        chart.render();
+    });
+</script>

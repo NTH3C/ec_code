@@ -145,22 +145,19 @@ class __TwigTemplate_9461b25dc38235807656bfe2aadb3fcf extends Template
         // line 72
         yield from $this->loadTemplate("modals/search.html.twig", "base.html.twig", 72)->unwrap()->yield($context);
         // line 73
-        yield "    ";
-        yield from $this->loadTemplate("modals/book.html.twig", "base.html.twig", 73)->unwrap()->yield($context);
-        // line 74
         yield "    <!-- End of Page -->
 
     <!-- Scripts -->
     <script src=\"";
-        // line 77
+        // line 76
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("metronic/js/core.bundle.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 78
+        // line 77
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("metronic/vendors/apexcharts/apexcharts.min.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 79
+        // line 78
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("metronic/js/widgets/general.js"), "html", null, true);
         yield "\"></script>
     <!-- End of Scripts -->
@@ -210,7 +207,7 @@ class __TwigTemplate_9461b25dc38235807656bfe2aadb3fcf extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  177 => 58,  164 => 79,  160 => 78,  156 => 77,  151 => 74,  148 => 73,  146 => 72,  137 => 65,  135 => 64,  128 => 59,  126 => 58,  121 => 55,  119 => 54,  109 => 46,  107 => 45,  100 => 40,  98 => 39,  69 => 13,  65 => 12,  61 => 11,  56 => 9,  46 => 1,);
+        return array (  174 => 58,  161 => 78,  157 => 77,  153 => 76,  148 => 73,  146 => 72,  137 => 65,  135 => 64,  128 => 59,  126 => 58,  121 => 55,  119 => 54,  109 => 46,  107 => 45,  100 => 40,  98 => 39,  69 => 13,  65 => 12,  61 => 11,  56 => 9,  46 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -287,7 +284,6 @@ class __TwigTemplate_9461b25dc38235807656bfe2aadb3fcf extends Template
     </div>
     <!-- End of Base -->
     {% include 'modals/search.html.twig' %}
-    {% include 'modals/book.html.twig' %}
     <!-- End of Page -->
 
     <!-- Scripts -->
