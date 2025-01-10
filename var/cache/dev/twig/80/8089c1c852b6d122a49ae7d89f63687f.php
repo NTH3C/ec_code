@@ -93,7 +93,7 @@ class __TwigTemplate_5a0f63ce360ed9288ce33eb7b618072a extends Template
                                    href=\"#\">
                                     <div>";
             // line 45
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["bookRead"], "id", [], "any", false, false, false, 45), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["bookRead"], "book", [], "any", false, false, false, 45), "name", [], "any", false, false, false, 45), "html", null, true);
             yield "</div>
                                 </a>
                                 <span class=\"text-2sm text-gray-700 font-normal leading-3\">
@@ -105,28 +105,27 @@ class __TwigTemplate_5a0f63ce360ed9288ce33eb7b618072a extends Template
                             </div>
                         </td>
                         <td>
-                            <div class=\"rating\">
-                                <div class=\"rating-label checked\">
-                                    <i class=\"rating-on ki-solid ki-star text-base leading-none\"></i>
-                                    <i class=\"rating-off ki-outline ki-star text-base leading-none\"></i>
-                                </div>
-                                <div class=\"rating-label checked\">
-                                    <i class=\"rating-on ki-solid ki-star text-base leading-none\"></i>
-                                    <i class=\"rating-off ki-outline ki-star text-base leading-none\"></i>
-                                </div>
-                                <div class=\"rating-label checked\">
-                                    <i class=\"rating-on ki-solid ki-star text-base leading-none\"></i>
-                                    <i class=\"rating-off ki-outline ki-star text-base leading-none\"></i>
-                                </div>
-                                <div class=\"rating-label checked\">
-                                    <i class=\"rating-on ki-solid ki-star text-base leading-none\"></i>
-                                    <i class=\"rating-off ki-outline ki-star text-base leading-none\"></i>
-                                </div>
-                                <div class=\"rating-label checked\">
-                                    <i class=\"rating-on ki-solid ki-star text-base leading-none\"></i>
-                                    <i class=\"rating-off ki-outline ki-star text-base leading-none\"></i>
-                                </div>
-                            </div>
+                            ";
+            // line 53
+            $context['_parent'] = $context;
+            $context['_seq'] = CoreExtension::ensureTraversable(range(1, 5));
+            foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
+                // line 54
+                yield "                                        <div class=\"rating-label ";
+                if (($context["i"] <= CoreExtension::getAttribute($this->env, $this->source, $context["bookRead"], "rating", [], "any", false, false, false, 54))) {
+                    yield "checked";
+                }
+                yield "\">
+                                            <i class=\"rating-on ki-solid ki-star text-base leading-none\"></i>
+                                            <i class=\"rating-off ki-outline ki-star text-base leading-none\"></i>
+                                        </div>
+                                    ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_key'], $context['i'], $context['_parent']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 59
+            yield "                            </div>
                         </td>
                     </tr>
                     ";
@@ -134,7 +133,7 @@ class __TwigTemplate_5a0f63ce360ed9288ce33eb7b618072a extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['bookRead'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 78
+        // line 63
         yield "                    </tbody>
                 </table>
             </div>
@@ -182,7 +181,7 @@ class __TwigTemplate_5a0f63ce360ed9288ce33eb7b618072a extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  138 => 78,  102 => 48,  96 => 45,  89 => 40,  85 => 39,  45 => 1,);
+        return array (  137 => 63,  128 => 59,  114 => 54,  110 => 53,  102 => 48,  96 => 45,  89 => 40,  85 => 39,  45 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -231,7 +230,7 @@ class __TwigTemplate_5a0f63ce360ed9288ce33eb7b618072a extends Template
                             <div class=\"flex flex-col gap-2\">
                                 <a class=\"leading-none font-medium text-sm text-gray-900 hover:text-primary\"
                                    href=\"#\">
-                                    <div>{{ bookRead.id }}</div>
+                                    <div>{{ bookRead.book.name }}</div>
                                 </a>
                                 <span class=\"text-2sm text-gray-700 font-normal leading-3\">
                                     <div>{{ bookRead.description }}</div>
@@ -239,27 +238,12 @@ class __TwigTemplate_5a0f63ce360ed9288ce33eb7b618072a extends Template
                             </div>
                         </td>
                         <td>
-                            <div class=\"rating\">
-                                <div class=\"rating-label checked\">
-                                    <i class=\"rating-on ki-solid ki-star text-base leading-none\"></i>
-                                    <i class=\"rating-off ki-outline ki-star text-base leading-none\"></i>
-                                </div>
-                                <div class=\"rating-label checked\">
-                                    <i class=\"rating-on ki-solid ki-star text-base leading-none\"></i>
-                                    <i class=\"rating-off ki-outline ki-star text-base leading-none\"></i>
-                                </div>
-                                <div class=\"rating-label checked\">
-                                    <i class=\"rating-on ki-solid ki-star text-base leading-none\"></i>
-                                    <i class=\"rating-off ki-outline ki-star text-base leading-none\"></i>
-                                </div>
-                                <div class=\"rating-label checked\">
-                                    <i class=\"rating-on ki-solid ki-star text-base leading-none\"></i>
-                                    <i class=\"rating-off ki-outline ki-star text-base leading-none\"></i>
-                                </div>
-                                <div class=\"rating-label checked\">
-                                    <i class=\"rating-on ki-solid ki-star text-base leading-none\"></i>
-                                    <i class=\"rating-off ki-outline ki-star text-base leading-none\"></i>
-                                </div>
+                            {% for i in 1..5 %}
+                                        <div class=\"rating-label {% if i <= bookRead.rating %}checked{% endif %}\">
+                                            <i class=\"rating-on ki-solid ki-star text-base leading-none\"></i>
+                                            <i class=\"rating-off ki-outline ki-star text-base leading-none\"></i>
+                                        </div>
+                                    {% endfor %}
                             </div>
                         </td>
                     </tr>

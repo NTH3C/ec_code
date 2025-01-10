@@ -90,7 +90,7 @@ class __TwigTemplate_31fb8d710cfbababd7aa790085ff7620 extends Template
                             ";
         // line 32
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable([1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]);
+        $context['_seq'] = CoreExtension::ensureTraversable([1, 2, 3, 4, 5]);
         foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
             // line 33
             yield "                                <option value=\"";
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class=\"flex flex-col gap-1\">
                         <label for=\"rating\" class=\"form-label font-normal text-gray-900\">Note</label>
                         <select id=\"rating\" class=\"select\" name=\"rating\" required>
-                            {% for i in [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5] %}
+                            {% for i in [1, 2, 3, 4, 5] %}
                                 <option value=\"{{ i }}\">{{ i }}</option>
                             {% endfor %}
                         </select>

@@ -29,7 +29,7 @@
                     <div class="flex flex-col gap-1">
                         <label for="rating" class="form-label font-normal text-gray-900">Note</label>
                         <select id="rating" class="select" name="rating" required>
-                            {% for i in [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5] %}
+                            {% for i in [1, 2, 3, 4, 5] %}
                                 <option value="{{ i }}">{{ i }}</option>
                             {% endfor %}
                         </select>

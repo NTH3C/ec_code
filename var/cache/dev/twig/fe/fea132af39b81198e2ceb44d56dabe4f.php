@@ -87,7 +87,7 @@ class __TwigTemplate_53030699772ed5656ed287e451e465a4 extends Template
                                        href=\"#\">
                                         <div>";
             // line 39
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["bookReading"], "id", [], "any", false, false, false, 39), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["bookReading"], "book", [], "any", false, false, false, 39), "name", [], "any", false, false, false, 39), "html", null, true);
             yield "</div>
                                     </a>
                                     <span class=\"text-2sm text-gray-700 font-normal leading-3\">
@@ -193,7 +193,7 @@ class __TwigTemplate_53030699772ed5656ed287e451e465a4 extends Template
                                 <div class=\"flex flex-col gap-2\">
                                     <a class=\"leading-none font-medium text-sm text-gray-900 hover:text-primary\"
                                        href=\"#\">
-                                        <div>{{ bookReading.id }}</div>
+                                        <div>{{ bookReading.book.name }}</div>
                                     </a>
                                     <span class=\"text-2sm text-gray-700 font-normal leading-3\">
                                     <div>{{ bookReading.description }}</div>

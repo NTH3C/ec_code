@@ -33,7 +33,6 @@ class HomeController extends AbstractController
             $userId       = $user->getId();    // L'ID de l'utilisateur, à ajuster selon le contexte
             $booksRead    = $this->readBookRepository->findByUserId($userId, true); 
             $booksReading = $this->readBookRepository->findByUserId($userId, false);
-            //dd($booksReading);
         }
         else {
             $booksRead    = null;
