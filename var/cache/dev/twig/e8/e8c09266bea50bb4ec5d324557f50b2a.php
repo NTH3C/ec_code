@@ -199,11 +199,25 @@ class __TwigTemplate_cb7fb948d8d4651c1e9d2bb01e025120 extends Template
                             </div>
                         </div>
                         <div class=\"menu-item px-4 py-1.5\">
-                            <a class=\"btn btn-sm btn-light justify-center\"
-                               href=\"#\">
-                                Me déconnecer
+                        ";
+        // line 140
+        if (((isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 140, $this->source); })()) != null)) {
+            // line 141
+            yield "                            <a class=\"btn btn-sm btn-light justify-center\"
+                               href=\"/logout\">
+                                Me déconnecter
                             </a>
-                        </div>
+                        ";
+        } else {
+            // line 146
+            yield "                            <a class=\"btn btn-sm btn-light justify-center\"
+                               href=\"/login\">
+                                Me connecter
+                            </a>
+                        ";
+        }
+        // line 151
+        yield "                        </div>
                     </div>
                 </div>
             </div>
@@ -237,7 +251,7 @@ class __TwigTemplate_cb7fb948d8d4651c1e9d2bb01e025120 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  174 => 113,  164 => 106,  128 => 73,  119 => 67,  56 => 7,  52 => 6,  45 => 1,);
+        return array (  220 => 151,  213 => 146,  206 => 141,  204 => 140,  174 => 113,  164 => 106,  128 => 73,  119 => 67,  56 => 7,  52 => 6,  45 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -381,10 +395,17 @@ class __TwigTemplate_cb7fb948d8d4651c1e9d2bb01e025120 extends Template
                             </div>
                         </div>
                         <div class=\"menu-item px-4 py-1.5\">
+                        {% if user != null %}
                             <a class=\"btn btn-sm btn-light justify-center\"
-                               href=\"#\">
-                                Me déconnecer
+                               href=\"/logout\">
+                                Me déconnecter
                             </a>
+                        {% else  %}
+                            <a class=\"btn btn-sm btn-light justify-center\"
+                               href=\"/login\">
+                                Me connecter
+                            </a>
+                        {% endif %}
                         </div>
                     </div>
                 </div>

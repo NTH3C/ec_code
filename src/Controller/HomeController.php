@@ -26,17 +26,24 @@ class HomeController extends AbstractController
     public function index(): Response
     {
 
-        $books = $this->bookRepository->findAll();
+        $books        = $this->bookRepository->findAll();
         $user         = $this->getUser();  
-        $userId       = $user->getId();    // L'ID de l'utilisateur, à ajuster selon le contexte
-        $booksRead    = $this->readBookRepository->findByUserId($userId, true); 
-        $booksReading = $this->readBookRepository->findByUserId($userId, false);
-        
-        
+    
+        if($user != null){
+            $userId       = $user->getId();    // L'ID de l'utilisateur, à ajuster selon le contexte
+            $booksRead    = $this->readBookRepository->findByUserId($userId, true); 
+            $booksReading = $this->readBookRepository->findByUserId($userId, false);
+        }
+        else {
+            $booksRead    = null;
+            $booksReading = null;
+        }
+
         // Récupère les livres lus par l'utilisateur
 
         // Render the 'home.html.twig' template
         return $this->render('pages/home.html.twig', [
+            'user'      =>$user,
             'books'     => $books,
             'booksRead' => $booksRead,  // Passe les livres lus à la vue
             'booksReading' => $booksReading,

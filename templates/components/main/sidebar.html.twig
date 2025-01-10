@@ -137,10 +137,17 @@
                             </div>
                         </div>
                         <div class="menu-item px-4 py-1.5">
+                        {% if user != null %}
                             <a class="btn btn-sm btn-light justify-center"
-                               href="#">
-                                Me déconnecer
+                               href="/logout">
+                                Me déconnecter
                             </a>
+                        {% else  %}
+                            <a class="btn btn-sm btn-light justify-center"
+                               href="/login">
+                                Me connecter
+                            </a>
+                        {% endif %}
                         </div>
                     </div>
                 </div>

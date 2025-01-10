@@ -1,58 +1,100 @@
+
+<!-- Modal -->
 <div class="modal" data-modal="true" id="book_modal">
     <div class="modal-content max-w-[600px] top-[15%]">
         <div class="modal-header py-4 px-5">
             <h3 class="modal-title">Ajouter une lecture</h3>
+            <button class="btn-close" data-modal-close="book_modal">&times;</button>
         </div>
         <div class="modal-body p-0 pb-5">
-            <div class="scrollable-y-auto" data-scrollable="true" data-scrollable-max-height="auto"
-                 data-scrollable-offset="300px">
-                <form action="{{ path('book_read') }}" method="POST">
-                    <div class="flex flex-col gap-5 p-5">
-                        <!-- Livre -->
-                        <div class="flex flex-col gap-1">
-                            <label for="book" class="form-label font-normal text-gray-900">Livre</label>
-                            <select id="book" name="book_id" class="select" required>
-                                {% for book in books %}
-                                    <option value="{{ book.id }}">{{ book.name }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-
-                        <!-- Notes -->
-                        <div class="flex flex-col gap-1">
-                            <label class="form-label font-normal text-gray-900">Mes notes</label>
-                            <div class="flex flex-col w-full gap-1">
-                                <textarea name="description" class="textarea"
-                                          placeholder="Notez ici les idées importantes de l'œuvre."
-                                          required></textarea>
-                            </div>
-                        </div>
-
-                        <!-- Note -->
-                        <div class="flex flex-col gap-1">
-                            <label for="rating" class="form-label font-normal text-gray-900">Note</label>
-                            <select id="rating" class="select" name="rating" required>
-                                {% for i in [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5] %}
-                                    <option value="{{ i }}">{{ i }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-
-                        <!-- Lecture terminée -->
-                        <div class="flex flex-col gap-1">
-                            <label class="switch">
-                                <span class="switch-label font-normal text-gray-900">Lecture terminée</span>
-                                <input name="is_read" type="checkbox" value="1"/>
-                            </label>
-                        </div>
-
-                        <!-- Bouton Enregistrer -->
-                        <div class="flex">
-                            <button type="submit" class="btn btn-primary">Enregistrer</button>
-                        </div>
+            <form id="book_form" method="POST">
+                <div class="flex flex-col gap-5 p-5">
+                    <!-- Livre -->
+                    <div class="flex flex-col gap-1">
+                        <label for="book" class="form-label font-normal text-gray-900">Livre</label>
+                        <select id="book" name="book_id" class="select" required>
+                        {% for book in books %}
+                            <option value="{{ book.id }}">{{ book.name }}</option>
+                        {% endfor %}
+                        </select>
                     </div>
-                </form>
-            </div>
+
+                    <!-- Notes -->
+                    <div class="flex flex-col gap-1">
+                        <label class="form-label font-normal text-gray-900">Mes notes</label>
+                        <textarea name="description" class="textarea" placeholder="Notez ici les idées importantes de l'œuvre." required></textarea>
+                    </div>
+
+                    <!-- Note -->
+                    <div class="flex flex-col gap-1">
+                        <label for="rating" class="form-label font-normal text-gray-900">Note</label>
+                        <select id="rating" class="select" name="rating" required>
+                            {% for i in [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5] %}
+                                <option value="{{ i }}">{{ i }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <!-- Lecture terminée -->
+                    <div class="flex flex-col gap-1">
+                        <label class="switch">
+                            <span class="switch-label font-normal text-gray-900">Lecture terminée</span>
+                            <input name="is_read" type="checkbox" value="1"/>
+                        </label>
+                    </div>
+
+                    <!-- Bouton Enregistrer -->
+                    <div class="flex">
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Sélection du formulaire
+    const form = document.querySelector('#book_form');
+    const modal = document.querySelector('#book_modal');
+    const bookList = document.querySelector('#book_list');
+
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+            const response = await fetch("/book/read", {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                },
+            });
+            const result = await response.json();
+            console.log(result)
+
+            if (response.ok) {
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    alert(result.message);
+
+                    // Met à jour la liste des lectures
+                    bookList.innerHTML = result.html;
+
+                    form.reset();
+
+                    // Ferme le modal
+                    modal.classList.add('hidden');
+                } else {
+                    alert(result.message);
+                }
+            } else {
+                alert("Une erreur est survenue lors de la soumission.");
+            }
+        });
+    }
+});
+</script>
