@@ -100,10 +100,10 @@ class __TwigTemplate_472f67c4dd8c4fcf68ed5866a7beba57 extends Template
                         Inscription
                     </h3>
                     <div class=\"flex items-center justify-center\">
-                        <span class=\"text-2sm text-gray-700 me-1.5\">
+                        <span class=\"text-2sm text-gray-700 me-1.5\" >
                             Vous avez déjà un compte ?
                         </span>
-                        <a class=\"text-2sm link\" >
+                        <a class=\"text-2sm link\" href=\"/login\">
                             Me connecter
                         </a>
                     </div>
@@ -137,7 +137,7 @@ class __TwigTemplate_472f67c4dd8c4fcf68ed5866a7beba57 extends Template
 
                 -->
 
-                <!-- Conditions d'utilisation -->
+                <!-- CGU -->
                 <label class=\"checkbox-group\">
                     ";
         // line 53
@@ -149,13 +149,13 @@ class __TwigTemplate_472f67c4dd8c4fcf68ed5866a7beba57 extends Template
                     </span>
                 </label>
 
-                <!-- Bouton d'envoi -->
+                <!-- Submit button -->
                 <button class=\"btn btn-primary flex justify-center grow\">Inscription</button>
 
                 ";
         // line 64
         yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 64, $this->source); })()), 'form_end');
-        yield " <!-- Ferme le formulaire -->
+        yield " <!-- Close the form -->
             </form>
         </div>
     </div>
@@ -210,10 +210,10 @@ class __TwigTemplate_472f67c4dd8c4fcf68ed5866a7beba57 extends Template
                         Inscription
                     </h3>
                     <div class=\"flex items-center justify-center\">
-                        <span class=\"text-2sm text-gray-700 me-1.5\">
+                        <span class=\"text-2sm text-gray-700 me-1.5\" >
                             Vous avez déjà un compte ?
                         </span>
-                        <a class=\"text-2sm link\" >
+                        <a class=\"text-2sm link\" href=\"/login\">
                             Me connecter
                         </a>
                     </div>
@@ -243,7 +243,7 @@ class __TwigTemplate_472f67c4dd8c4fcf68ed5866a7beba57 extends Template
 
                 -->
 
-                <!-- Conditions d'utilisation -->
+                <!-- CGU -->
                 <label class=\"checkbox-group\">
                     {{ form_row(registrationForm.agreeTerms, {
                         'attr': {'class': 'checkbox checkbox-sm'}
@@ -253,10 +253,10 @@ class __TwigTemplate_472f67c4dd8c4fcf68ed5866a7beba57 extends Template
                     </span>
                 </label>
 
-                <!-- Bouton d'envoi -->
+                <!-- Submit button -->
                 <button class=\"btn btn-primary flex justify-center grow\">Inscription</button>
 
-                {{ form_end(registrationForm) }} <!-- Ferme le formulaire -->
+                {{ form_end(registrationForm) }} <!-- Close the form -->
             </form>
         </div>
     </div>

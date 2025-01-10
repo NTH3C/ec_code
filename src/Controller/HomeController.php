@@ -2,10 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\BookRead;
 use App\Repository\BookReadRepository;
 use App\Repository\BookRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -17,7 +17,7 @@ class HomeController extends AbstractController
     // Inject the repository via the constructor
     public function __construct(BookReadRepository $bookReadRepository, BookRepository $bookRepository)
     {
-        $this->readBookRepository = $bookReadRepository;
+        $this->readBookRepository = $bookReadRepository; 
         $this->bookRepository = $bookRepository;
     }
 
@@ -28,26 +28,26 @@ class HomeController extends AbstractController
 
         $books        = $this->bookRepository->findAll();
         $user         = $this->getUser();  
+        
     
         if($user != null){
-            $userId       = $user->getId();    // L'ID de l'utilisateur, à ajuster selon le contexte
+            $userId       = $user->getId();    
             $booksRead    = $this->readBookRepository->findByUserId($userId, true); 
             $booksReading = $this->readBookRepository->findByUserId($userId, false);
         }
+
         else {
-            $booksRead    = null;
-            $booksReading = null;
+            return $this->redirectToRoute('app_login');
         }
 
-        // Récupère les livres lus par l'utilisateur
 
         // Render the 'home.html.twig' template
         return $this->render('pages/home.html.twig', [
-            'user'      =>$user,
-            'books'     => $books,
-            'booksRead' => $booksRead,  // Passe les livres lus à la vue
-            'booksReading' => $booksReading,
-            'name'      => 'Accueil',    // Passe un nom à la vue
+            'user'         =>$user,          // Connected User
+            'books'        => $books,        // All the database books
+            'booksRead'    => $booksRead,    // All the book that the current user read
+            'booksReading' => $booksReading, // All the book that the current user is reading
+            'name'         => 'Accueil',     // Give a name to the vue
         ]);
     }
 }

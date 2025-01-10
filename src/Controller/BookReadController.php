@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\BookRead;
 use App\Repository\BookRepository;
-use App\Repository\BookReadRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -23,27 +22,31 @@ class BookReadController extends AbstractController
     #[Route('/book/read', name: 'book_read', methods: ['POST'])]
     public function saveBookRead(Request $request, EntityManagerInterface $entityManager): JsonResponse
     {
-        // // Vérifier si la requête est AJAX
-        // if (!$request->isXmlHttpRequest()) {
-        //     return new JsonResponse(['status' => 'error', 'message' => 'Requête invalide.'], 400);
-        // }
+        
+        // Get all the form data
 
-        // Récupérer les données du formulaire
-        $bookId = $request->request->get('book_id');
+        $bookId      = $request->request->get('book_id');
         $description = $request->request->get('description');
-        $rating = $request->request->get('rating');
-        $isRead = $request->request->get('is_read') === '1';
+        $rating      = $request->request->get('rating');
+        $isRead      = $request->request->get('is_read') === '1';
 
-        // Vérifier l'utilisateur connecté
-        $user = $this->getUser();
+        
+        $user = $this->getUser(); // Get user via is CSRF Token
+
         if (!$user) {
-            return new JsonResponse(['status' => 'error', 'message' => 'Vous devez être connecté pour effectuer cette action.']);
+            return new JsonResponse(['status' => 'error', 
+                                     'message' => 'Vous devez être connecté pour effectuer cette action.'
+                                    ]);
         }
 
-        // Récupérer l'entité Book correspondante
+        // Get the book entity related to the id in the form
+
         $book = $this->bookRepository->find($bookId);
+
         if (!$book) {
-            return new JsonResponse(['status' => 'error', 'message' => 'Le livre sélectionné est introuvable.']);
+            return new JsonResponse(['status' => 'error', 
+                                     'message' => 'Le livre sélectionné est introuvable.'
+                                    ]);
         }
 
         // Créer une nouvelle instance de BookRead
@@ -51,23 +54,24 @@ class BookReadController extends AbstractController
 
         $books    = $this->bookRepository->findOneById($bookId);
 
-        $bookRead->setBook($books);
+        $bookRead ->setBook($books);
 
         $userId   = $user->getId();
 
-        $bookRead->setUserId($userId);
-        $bookRead->setDescription($description);
-        $bookRead->setRating($rating);
-        $bookRead->setRead($isRead);
-        $bookRead->setCreatedAt(new \DateTime());
-        $bookRead->setUpdatedAt(new \DateTime());
+        $bookRead ->setUserId($userId);             // Set the user id to the book read
+        $bookRead ->setDescription($description);   // Set the description to the book read
+        $bookRead ->setRating($rating);             // Set the rating to the book read
+        $bookRead ->setRead($isRead);               // Set if the user is reading the book or has read it
+        $bookRead ->setCreatedAt(new \DateTime());  // Current Datetime when the entity is created
+        $bookRead ->setUpdatedAt(new \DateTime());  // Current Datetime when the entity is updated
 
-        // Sauvegarder dans la base de données
-        $entityManager->persist($bookRead);
-        $entityManager->flush();
+        // Save to database
+        $entityManager ->persist($bookRead);
+        $entityManager ->flush();
 
 
         return new JsonResponse(['status' => 'success',
-                                 'message' => 'Lecture enregistrée avec succès!']);
+                                 'message' => 'Lecture enregistrée avec succès!'
+                                ]);
     }
 }

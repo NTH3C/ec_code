@@ -18,8 +18,14 @@ class BookReadFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+
+
             ->add('user_id')
+
+
             ->add('book_id') 
+
+            
             ->add('rating', NumberType::class, [
                 'constraints' => [
                     new Range([
@@ -29,7 +35,8 @@ class BookReadFormType extends AbstractType
                     ]),
                 ],
             ])
-            // Ajout du champ description
+            
+
             ->add('description', TextType::class, [
                 'constraints' => [
                     new NotBlank([
@@ -37,16 +44,20 @@ class BookReadFormType extends AbstractType
                     ]),
                 ],
             ])
-            // Ajout du champ createdAt
+            
+
             ->add('createdAt', DateTimeType::class, [
                 'data' => new \DateTime(),
                 'attr' => ['readonly' => true], // user can't modify
             ])
-            // Ajout du champ updatedAt
+            
+
             ->add('updatedAt', DateTimeType::class, [
                 'data' => new \DateTime(),
                 'attr' => ['readonly' => true], // user can't modify
             ])
+
+
             ->add('is_read', ChoiceType::class, [
                 'mapped' => false,
                 'choices' => [
@@ -64,7 +75,7 @@ class BookReadFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => BookRead::class, // Corrigez ici si nécessaire
+            'data_class' => BookRead::class, 
         ]);
     }
 }

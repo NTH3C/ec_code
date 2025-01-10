@@ -15,10 +15,10 @@
                         Inscription
                     </h3>
                     <div class="flex items-center justify-center">
-                        <span class="text-2sm text-gray-700 me-1.5">
+                        <span class="text-2sm text-gray-700 me-1.5" >
                             Vous avez déjà un compte ?
                         </span>
-                        <a class="text-2sm link" >
+                        <a class="text-2sm link" href="/login">
                             Me connecter
                         </a>
                     </div>
@@ -48,7 +48,7 @@
 
                 -->
 
-                <!-- Conditions d'utilisation -->
+                <!-- CGU -->
                 <label class="checkbox-group">
                     {{ form_row(registrationForm.agreeTerms, {
                         'attr': {'class': 'checkbox checkbox-sm'}
@@ -58,10 +58,10 @@
                     </span>
                 </label>
 
-                <!-- Bouton d'envoi -->
+                <!-- Submit button -->
                 <button class="btn btn-primary flex justify-center grow">Inscription</button>
 
-                {{ form_end(registrationForm) }} <!-- Ferme le formulaire -->
+                {{ form_end(registrationForm) }} <!-- Close the form -->
             </form>
         </div>
     </div>

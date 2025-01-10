@@ -32,9 +32,9 @@ class BookRepository extends ServiceEntityRepository
     public function findOneById($value): ?Book
     {
         return $this->createQueryBuilder('b')
-            ->andWhere('b.id = :id') // Utilisation de la colonne 'id'
-            ->setParameter('id', $value) // Liaison du paramètre 'id'
-            ->getQuery()
-            ->getOneOrNullResult(); // Retourne une seule entité ou null
+                    ->andWhere('b.id = :id') // Utilisation de la colonne 'id'
+                    ->setParameter('id', $value) // Liaison du paramètre 'id'
+                    ->getQuery()
+                    ->getOneOrNullResult(); // Retourne une seule entité ou null
     }
 }

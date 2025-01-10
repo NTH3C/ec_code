@@ -11,9 +11,6 @@ class BookReadingController extends AbstractController
     #[Route('/book/reading', name: 'app_book_reading')]
     public function index(): Response
     {
-
-
-
         return $this->render('home/booksReading.html.twig', [
         ]);
     }
